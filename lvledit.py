@@ -19,9 +19,14 @@ tile1 = pg.image.load('img/Tile_01.png')
 tile2 = pg.image.load('img/Tile_02.png')
 tile3 = pg.image.load('img/Tile_03.png')
 tile4 = pg.image.load('img/Tile_12.png')
+tile5 = pg.image.load('img/Tile_30.png')
+opp = pg.image.load('img/enemy/enem_1.png')
+portal = pg.image.load('img/portal/portal_01.png')
+skeleton = pg.image.load('img/skeleton/skeleton_00.png')
 
 clicked = False
 level = 1
+
 
 white = (255,255,255)
 
@@ -53,7 +58,19 @@ def draw_map():
                 if world_data[row][col] == 4:
                     img = pg.transform.scale(tile4,(tile,tile))
                     screen.blit(img,(col * tile,row * tile))
-
+                if world_data[row][col] == 5:
+                    img = pg.transform.scale(opp,(tile,tile))
+                    screen.blit(img,(col * tile,row * tile))
+                if world_data[row][col] == 6:
+                    img = pg.transform.scale(portal,(tile,tile * 1.5))
+                    screen.blit(img,(col * tile,row * tile))
+                if world_data[row][col] == 7:
+                    img = pg.transform.scale(tile5,(tile,tile * 1.5))
+                    screen.blit(img,(col * tile,row * tile))
+                if world_data[row][col] == 8:
+                    img = pg.transform.scale(skeleton,(tile,tile * 2))
+                    screen.blit(img,(col * tile,row * tile))
+                
 
 run = True
 
@@ -95,7 +112,7 @@ while run:
                 if pg.mouse.get_pressed()[0] == 1:
                      world_data[y][x] += 1
                 elif pg.mouse.get_pressed()[2] == 1:
-                    world_data[y][x] = 0
+                    world_data[y][x] -= 1
 
                 
                     
